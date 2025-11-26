@@ -14,7 +14,7 @@ genai.configure(api_key=api_key)
 model = genai.GenerativeModel(
     "models/gemini-2.5-flash",
     system_instruction=(
-        "Answer in maximum 10 lines, simple plain text only. "
+        "Answer in maximum 20 lines, simple plain text only. "
         "No bold, no lists, no headings. "
         "Give clear and short explanations."
     )
@@ -33,9 +33,7 @@ while True:
     try:
         response = model.generate_content(
             user_input,
-            generation_config={
-                "response_mime_type": "text/plain"
-            }
+            generation_config={"response_mime_type": "text/plain"}
         )
         print("Bot:", response.text)
     except Exception as e:
